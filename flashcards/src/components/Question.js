@@ -1,15 +1,29 @@
+import React, {useState, useEffect } from 'react'
 import {FaTimes} from 'react-icons/fa'
 import { Button } from "./Button"
 
-export const Question = ({question, onDelete, isActive, setSelectedItem, setShowAddQuestion}) => {
-    const onClick = () => {
-        
-    }
+export const Question = ({question, onDelete, setSelectedItem, setShowAddQuestion}) => {
+    const [showAnswers, setShowAnswers] = useState(false)
+    const onClick = () => setShowAnswers(!showAnswers)
+
+    const Answers = () => (
+        <div id="Answers" className="answers">
+          {question.answer}
+        </div>
+    )
+
     return (
-        <div className= {`question ${question.active ? 'active' : ''}`} >
-            <h3>{question.question} <FaTimes style ={{color:'red', cursor:'pointer'}}/></h3>
-            <a >show/hide Answer</a>
-            <p id='answer'> {question.answer}</p>
+        <div className= 'question ' >
+            <h3>{
+            question.question} 
+            <FaTimes style ={
+                {color:'red', cursor:'pointer'}}  
+                onClick = { () => onDelete(question.id)}/></h3>
+            <a onClick={onClick} >show/hide Answer</a>
+            <div>
+                 <a onClick={onClick} />
+                  { showAnswers ? <Answers /> : null }
+            </div>
             <div> <Button 
             onClick = {() => {
                 setSelectedItem(question);

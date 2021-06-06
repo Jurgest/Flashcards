@@ -1,7 +1,7 @@
 import { Question } from "./Question"
 
 
-export const Questions = ({questions, onDelete, isActive, setSelectedItem, setShowAddQuestion}) => {
+export const Questions = ({questions, onDelete, setSelectedItem, setShowAddQuestion}) => {
     
     return (
         <>
@@ -9,8 +9,7 @@ export const Questions = ({questions, onDelete, isActive, setSelectedItem, setSh
             <Question  
                 key ={question.id} 
                 question={question} 
-                onDelete={onDelete} 
-                isActive={isActive}  
+                onDelete={onDelete}   
                 setSelectedItem={setSelectedItem}
                 setShowAddQuestion={setShowAddQuestion}
             />
